@@ -43,13 +43,13 @@ public class PersonRepositoryIntegrationTest extends IntegrationTest {
 		assertEquals(count - 1, personRepository.count());		
 	}
 	
-//	@Test
-//	@DirtiesContext
-//	public void testReadPersonAndCheckIsRedaCorrect() {
-//		Person person = personRepository.getOne(personRepository.count());
-//		assertEquals(person.getFirstName(), personRepository.getOne(personRepository.count()).getFirstName());
-//		
-//	}
+	@Test
+	@DirtiesContext
+	public void testReadPersonAndCheckIsRedaCorrect() {
+		Person person = personRepository.findOne(personRepository.count());
+		assertEquals(person.getFirstName(), personRepository.findOne(personRepository.count()).getFirstName());
+		
+	}
 	
 	@Test
 	@DirtiesContext
