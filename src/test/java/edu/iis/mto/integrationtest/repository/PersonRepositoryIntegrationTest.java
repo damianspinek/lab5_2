@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.DirtiesContext;
 
 import edu.iis.mto.integrationtest.model.Person;
 
@@ -23,6 +24,7 @@ public class PersonRepositoryIntegrationTest extends IntegrationTest {
 	}
 
 	@Test
+	@DirtiesContext
 	public void testSaveNewPersonAndCheckIsPersisted() {
 		long count = personRepository.count();
 		personRepository.save(a(person().withId(count + 1)
@@ -31,7 +33,7 @@ public class PersonRepositoryIntegrationTest extends IntegrationTest {
 		assertEquals("Mancini", personRepository.findOne(count + 1)
 				.getLastName());
 		
-		personRepository.delete(count+1);
+		//personRepository.delete(count+1);
 	}
 
 	private Person a(PersonBuilder builder) {
