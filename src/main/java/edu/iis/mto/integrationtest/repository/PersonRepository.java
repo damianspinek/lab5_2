@@ -10,5 +10,6 @@ import edu.iis.mto.integrationtest.model.Person;
 
 public interface PersonRepository extends JpaRepository<Person, Long>{
 	public List<Person> findByFirstNameLike(String firstName);
+	
 
 }
