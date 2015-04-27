@@ -39,11 +39,25 @@ public class PersonRepositoryIntegrationTest extends IntegrationTest {
 	@DirtiesContext
 	public void testDeletePersonAndCheckIsDeleted() {
 		long count = personRepository.count();
-		personRepository.delete(count);
-		
-		assertEquals(count - 1, personRepository.count());
+		personRepository.delete(count);		
+		assertEquals(count - 1, personRepository.count());		
+	}
 	
-		
+//	@Test
+//	@DirtiesContext
+//	public void testReadPersonAndCheckIsRedaCorrect() {
+//		Person person = personRepository.getOne(personRepository.count());
+//		assertEquals(person.getFirstName(), personRepository.getOne(personRepository.count()).getFirstName());
+//		
+//	}
+	
+	@Test
+	@DirtiesContext
+	public void testUpdatePersonAndCheckIsUptated() {
+		long count = personRepository.count();
+		personRepository.save(a(person().withId(count).withFirstName("Arsene").withLastName("Wenger")));
+		assertEquals(count, personRepository.count());	
+		assertEquals("Wenger", personRepository.findOne(count).getLastName());
 	}
 
 	private Person a(PersonBuilder builder) {
